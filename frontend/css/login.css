@@ -1,0 +1,496 @@
+.login {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+/* //LADO ESQUERDO// */
+
+.esquerda {
+    flex: 1.6;
+    min-width: 0;
+    min-height: 100vh;
+    padding: clamp(28px, 4vw, 56px) clamp(24px, 5vw, 72px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    border-right: 1px solid var(--borda);
+
+
+    background:
+        radial-gradient(ellipse 70% 55% at 50% 40%, rgba(43, 217, 107, 0.10), transparent 70%),
+        linear-gradient(rgba(43, 217, 107, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(43, 217, 107, 0.04) 1px, transparent 1px),
+        var(--fundo);
+    background-size: auto, 48px 48px, 48px 48px, auto;
+}
+
+
+.logo {
+    align-self: flex-start;
+    display: inline-block;
+    border-radius: 12px;
+    transition: transform 0.4s var(--mola);
+}
+
+
+.logo:hover {
+    transform: scale(1.04);
+}
+
+.logo:focus-visible {
+    outline: 2px solid var(--texto);
+    outline-offset: 4px;
+}
+
+.logo-img {
+    display: block;
+    /* mistura a imagem com o que está atrás dela */
+    mix-blend-mode: screen;
+    /* cresce com a largura, mas também respeita a altura da tela */
+    width: clamp(7rem, 10vw, 10rem);
+    height: auto;
+}
+
+/* ILUSTRAÇÃO */
+.ilustracao {
+    display: flex;
+    justify-content: center;
+    margin: auto 0 clamp(20px, 3vh, 36px);
+}
+
+.ilustracao img {
+    display: block;
+    /* a ilustração é a maior peça da coluna, maior que o título */
+    width: min(560px, 100%);
+    height: auto;
+    /* em tela baixa (notebook) ela encolhe para tudo caber sem rolar */
+    max-height: 46vh;
+    object-fit: contain;
+}
+
+/* TEXTO */
+.texto {
+    max-width: 520px;
+}
+
+.texto h1 {
+    margin: 0 0 14px;
+    font-size: clamp(26px, 2.4vw, 36px);
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    text-wrap: balance;
+}
+
+.texto p {
+    margin: 0 auto 24px;
+    max-width: 440px;
+    font-size: clamp(15px, 1.1vw, 17px);
+    line-height: 1.6;
+    color: var(--texto-secundario);
+}
+
+
+.texto ul {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: left;
+}
+
+.texto li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    color: var(--texto);
+}
+
+.texto li i {
+    color: var(--verde);
+    font-size: 1.1em;
+}
+
+/* /RODAPÉ/ */
+.esquerda small {
+    margin-top: auto;
+    padding-top: 32px;
+    font-size: 13px;
+    color: var(--texto-secundario);
+    opacity: 0.8;
+}
+
+
+/* /LADO DIREITO/ */
+.direita {
+    flex: 1;
+    min-width: 0;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: clamp(20px, 3vw, 40px);
+    background-color: var(--superficie);
+}
+
+
+.card {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 380px;
+    padding: 32px 28px 28px;
+
+    background-color: var(--card);
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--degrade);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+
+.card:hover {
+    border-color: rgba(43, 217, 107, 0.5);
+}
+
+.card:focus-within {
+    border-color: var(--verde);
+    box-shadow: 0 14px 34px rgba(43, 217, 107, 0.12);
+}
+
+.card:focus-within::before {
+    transform: scaleX(1);
+}
+
+.card a {
+    text-decoration: none;
+}
+
+.card h2 {
+    margin: 0 0 6px;
+    font-size: 22px;
+}
+
+.card>p {
+    margin: 0 0 20px;
+    font-size: 14px;
+    color: var(--texto-secundario);
+}
+
+
+/* BOTÕES*/
+.github,
+.btngoogle,
+.entrar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    width: 100%;
+    height: 44px;
+    border-radius: 50px;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+
+    transition: transform 0.4s var(--mola), background-color 0.3s, border-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+/* GITHUB E GOOGLE/ */
+.github,
+.btngoogle {
+    background: transparent;
+    border: 1px solid rgba(234, 247, 240, 0.35);
+    color: var(--texto);
+}
+
+.github {
+    margin-bottom: 10px;
+}
+
+.github i {
+    font-size: 17px;
+}
+
+.github:hover,
+.btngoogle:hover {
+    transform: translateY(-2px);
+    border-color: var(--verde);
+    background-color: rgba(43, 217, 107, 0.08);
+}
+
+
+.entrar {
+    position: relative;
+    overflow: hidden;
+    margin-top: 6px;
+    border: none;
+    background: var(--degrade);
+    color: var(--texto-sobre-verde);
+}
+
+.entrar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(43, 217, 107, 0.35);
+}
+
+.entrar::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    transform: skewX(-20deg);
+}
+
+.entrar:hover::after {
+    left: 120%;
+    transition: left 0.6s;
+}
+
+
+.github:active,
+.btngoogle:active,
+.entrar:active {
+    transform: translateY(0) scale(0.97);
+    transition-duration: 0.1s;
+}
+
+
+.github:focus-visible,
+.btngoogle:focus-visible,
+.entrar:focus-visible,
+.card a:focus-visible {
+    outline: 2px solid var(--texto);
+    outline-offset: 3px;
+}
+
+
+/* DIVISOR */
+.divisor {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 18px 0;
+    font-size: 12px;
+    color: var(--texto-secundario);
+}
+
+.divisor span {
+    flex: 1;
+    height: 1px;
+    background: var(--borda);
+}
+
+
+/* FORMULÁRIO */
+form label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--texto);
+}
+
+form input {
+    width: 100%;
+    height: 42px;
+    margin-bottom: 14px;
+    padding: 0 14px;
+
+    background-color: var(--fundo);
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+
+    font-family: inherit;
+    font-size: 16px;
+    /* com menos de 16px o iPhone dá zoom ao tocar no campo */
+    color: var(--texto);
+
+    outline: none;
+    transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+form input::placeholder {
+    color: var(--texto-secundario);
+    opacity: 0.6;
+}
+
+
+form input:focus {
+    border-color: var(--verde);
+    box-shadow: 0 0 0 4px rgba(43, 217, 107, 0.15);
+}
+
+.senha-titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.senha-titulo a {
+    font-size: 12px;
+    color: var(--verde);
+}
+
+.senha-titulo a:hover,
+.cadastro a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+
+/* AVISO */
+.aviso {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+    padding: 12px;
+
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    background-color: var(--superficie);
+
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--texto-secundario);
+}
+
+.aviso i {
+    color: var(--verde);
+    font-size: 14px;
+}
+
+
+/* CADASTRO */
+.cadastro {
+    margin-top: 16px;
+    font-size: 13px;
+    text-align: center;
+    color: var(--texto-secundario);
+}
+
+.cadastro a {
+    font-weight: 600;
+    color: var(--verde);
+}
+
+
+/* /ENTRADA/  */
+.logo,
+.ilustracao,
+.texto,
+.card {
+    animation: card_entra 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.ilustracao {
+    animation-delay: 0.1s;
+}
+
+.texto {
+    animation-delay: 0.2s;
+}
+
+.card {
+    animation-delay: 0.3s;
+}
+
+
+/* TELAS MENORES */
+
+
+@media (max-width: 900px) {
+
+    .login {
+        flex-direction: column;
+    }
+
+    .esquerda,
+    .direita {
+        flex: none;
+        width: 100%;
+        min-height: auto;
+    }
+
+    .esquerda {
+        border-right: none;
+        border-bottom: 1px solid var(--borda);
+        padding-bottom: 32px;
+    }
+
+    .logo-img {
+        width: 7rem;
+    }
+
+    .ilustracao {
+        margin-top: 8px;
+    }
+
+    .ilustracao img {
+        max-height: 260px;
+    }
+
+
+    .esquerda small {
+        display: none;
+    }
+
+    .direita {
+        padding-block: 32px 48px;
+    }
+}
+
+@media (max-width: 500px) {
+
+
+    .ilustracao,
+    .texto ul {
+        display: none;
+    }
+
+    .logo-img {
+        width: 6rem;
+    }
+
+    .texto {
+        margin-top: 12px;
+    }
+
+    .texto p {
+        margin-bottom: 0;
+    }
+
+    .card {
+        padding: 26px 20px 22px;
+    }
+}
